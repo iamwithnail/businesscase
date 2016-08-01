@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+    <meta charset="UTF-8">
+    {% block header_title %} Benefits summary{% endblock %}
+
+{% block css %}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+{% endblock %}
+{% block javascript %} {% endblock %}
+<!-- Still to do - make this render as many inputs as I pass it (maybe last) - dynamically render the info passed to it
+<!-- Work out why the Z axis thing is doing such strange stuff... -->
+{% block content %}
+<script>
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Total Capital Build Costs (£) including capital contingency'
+        },
+        tooltip: {
+    formatter: function () {
+        return 'Spend: £<b>' + Highcharts.numberFormat(this.point.spend,0,'.',',')+'</b>';
+    }
+},
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+                name: 'Breakdown by School',
+                colorByPoint: true,
+                data: [{
+                    name: 'Bannockburn',
+                    y: 18,
+                    spend: '3909444',
+                    drilldown: 'Bannockburn'
+                }, {
+                    name: 'Stirling',
+                    y: 15,
+                    spend: '3376563',
+                    sliced: true,
+                    selected: true,
+                    drilldown: 'Stirling'
+                }, {
+                    name: 'Alloa',
+                    y: 16,
+                    spend: '3393088',
+                    drilldown: 'Alloa',
+                }, {
+                    name: 'Falkirk',
+                    y: 24,
+                    spend: '5348040',
+                    drilldown: 'Falkirk'
+                }, {
+                    name: 'Hay',
+                    y: 27,
+                    spend: 5926852,
+                    drilldown: 'Hay'
+                }]
+        }],
+        drilldown: {
+            series: [{
+                name: 'Bannockburn',
+                id: 'Bannockburn',
+                data: [
+                    ['New School Costs', 8721540, 40],
+                    ['Capital Contigency',1946251 ],
+                    ['Professional Fees', 2578461],
+                    ['Fixtures and Fittings', 1358784],
+                    ['External Works And Access', 2150923],
+                    ['Site Preparation', 2284000],
+                        ['Additional Items', 939023],
+                        ['Community Facilities', 940739],
+                        ['2+ 3+ Early Years', 987660]
+                ]
+            }, {
+                name: 'Stirling',
+                id: 'Stirling',
+                data: [
+                    ['New School Costs', 8721540, 40],
+                    ['Capital Contigency',1946251 ],
+                    ['Professional Fees', 2578461],
+                    ['Fixtures and Fittings', 1358784],
+                    ['External Works And Access', 2150923],
+                    ['Site Preparation', 2284000],
+                        ['Additional Items', 939023],
+                        ['Community Facilities', 940739],
+                        ['2+ 3+ Early Years', 987660]
+                ]
+            }, {
+                name: 'Falkirk',
+                id: 'Falkirk',
+                data: [
+                    ['New School Costs', 8721540, 40],
+                    ['Capital Contigency',1946251 ],
+                    ['Professional Fees', 2578461],
+                    ['Fixtures and Fittings', 1358784],
+                    ['External Works And Access', 2150923],
+                    ['Site Preparation', 2284000],
+                        ['Additional Items', 939023],
+                        ['Community Facilities', 940739],
+                        ['2+ 3+ Early Years', 987660]
+                ]
+            }, {
+                name: 'Hay',
+                id: 'Hay',
+                data: [
+                    ['New School Costs', 1721540, 40],
+                    ['Capital Contigency',2946251 ],
+                    ['Professional Fees', 2578461],
+                    ['Fixtures and Fittings', 358784],
+                    ['External Works And Access', 2150923],
+                    ['Site Preparation', 384000],
+                        ['Additional Items', 939023],
+                        ['Community Facilities', 940739],
+                        ['2+ 3+ Early Years', 987660]
+                ]
+            },
+            {
+                name: 'Alloa',
+                id: 'Alloa',
+                data: [
+                    ['New School Costs', 8721540, 40],
+                    ['Capital Contigency',1946251 ],
+                    ['Professional Fees', 2578461],
+                    ['Fixtures and Fittings', 1358784],
+                    ['External Works And Access', 2150923],
+                    ['Site Preparation', 2284000],
+                        ['Additional Items', 939023],
+                        ['Community Facilities', 940739],
+                        ['2+ 3+ Early Years', 987660]
+                ]
+            }]
+        }
+    });
+});
+</script>
+<div id="container" style="width:80%; height:600px;"></div>
+{% endblock %}

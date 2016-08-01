@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block header_title %} Project Status Summary{% endblock %}
+{% block content %}
+
+<div class="text-xs-center" id="example-caption-1">Total progress&hellip; 37%</div>
+<progress class="progress progress-info" value="37" max="100" aria-describedby="example-caption-1"></progress>
+<div class="card-group">
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+
+    <div class="text-xs-center" id="example-caption-1">Strategic Case&hellip; 85%</div>
+<progress class="progress progress-success" value="85" max="100" aria-describedby="example-caption-1"></progress>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-block">
+      <h3 class="card-title">Status Quo examined</h3>
+      <p class="card-text">Narrative completed and agreed. </p>
+      <a href="#" class="btn btn-primary btn-success">View</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card card-block">
+      <h3 class="card-title">Options framework completed</h3>
+      <p class="card-text">Options workshop carried out and PWF identified. </p>
+      <a href="#" class="btn btn-primary btn-success">View</a>
+    </div>
+  </div>
+</div>
+
+
+    <div class="text-xs-center" id="example-caption-1">Economic Case&hellip; 60%</div>
+<progress class="progress progress-success" value="60" max="100" aria-describedby="example-caption-1"></progress>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-block">
+      <h3 class="card-title">Option 1 Feeder Sheet</h3>
+      <p class="card-text">Option 1 Cost items completed </p>
+
+      <a href="{% url 'costs' %}" class="btn btn-primary btn-success">View</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card card-block">
+      <h3 class="card-title">Option 2 Feeder Sheet</h3>
+      <p class="card-text">Option 2 (PWF) cost items completed </p>
+      <a href="{% url 'costs' %}" class="btn btn-success">View</a>
+    </div>
+  </div><div class="row">
+  <div class="col-sm-6">
+    <div class="card card-block">
+      <h3 class="card-title">Option 3 Feeder Sheet</h3>
+      <p class="card-text">To be completed</p>
+      <a href="{% url 'costs' %}" class="btn btn-primary btn-danger">Complete Now</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card card-block">
+      <h3 class="card-title">Option 4 Feeder Sheet</h3>
+      <p class="card-text">Started </p>
+      <a href="{% url 'costs' %}" class="btn btn-primary">Finish now</a>
+    </div>
+  </div>
+    <div class="text-xs-center" id="example-caption-1">Financial Case&hellip; 20%</div>
+<progress class="progress progress-warning" value="20" max="100" aria-describedby="example-caption-1"></progress>
+
+    <div class="text-xs-center" id="example-caption-1">Management Case&hellip; 10%</div>
+<progress class="progress progress-danger" value="10" max="100" aria-describedby="example-caption-1"></progress>
+
+{% endblock %}

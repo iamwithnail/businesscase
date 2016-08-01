@@ -12,6 +12,19 @@
   border-color: #eed3d7;
 }
 
+.header{
+  font-size: x-large;
+}
+
+.cost-profile-container{
+  width: 50%;
+  display: inline;
+  margin-left: 500px;
+}
+.cost-profile-container td {
+  width:75px;
+}
+
 /* This is a fix for the bootstrap4 alpha release */
 @media (max-width: 47.9em) {
   .navbar-nav .nav-item {
@@ -35,4 +48,9 @@
 */
 [hidden][style="display: block;"] {
   display: block !important;
+}
+
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
 }

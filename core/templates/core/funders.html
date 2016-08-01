@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+<head>
+{% block css %}  <script type="text/javascript" src="http://kozea.github.com/pygal.js/latest/pygal-tooltips.min.js"></script>{% endblock css %}
+
+{% block content %}
+    <figure>
+      <!-- Pygal render() result: -->
+     <embed type="image/svg+xml" src="/static/images/graphs/{{ filename }}">
+      <!-- End of Pygal render() result: -->
+    </figure>
+
+{% endblock %}
+
+

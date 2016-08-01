@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+    <meta charset="UTF-8">
+    {% block header_title %} Benefits summary{% endblock %}
+
+{% block css %}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+{% endblock %}
+{% block javascript %} {% endblock %}
+<!-- Still to do - make this render as many inputs as I pass it (maybe last) - dynamically render the info passed to it
+<!-- Work out why the Z axis thing is doing such strange stuff... -->
+{% block content %}
+<script>
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'bubble',
+            plotBorderWidth: 1,
+        },
+        legend: {
+            enabled: false
+        },
+        title: {
+            text: 'Economic Analysis - Stirling Council oBC v2'
+        },
+        subtitle: {
+            text: 'Value People and C Campbell Consulting Ltd'
+        },
+        xAxis: {
+            tickInterval: 5000,
+            startOnTick: true,
+            min: 0,
+            max: 25000,
+            title: {
+                text: 'Net Present Cost'
+            },
+            labels: {
+                format: '{value} £m'
+            },
+        },
+        zAxis: {
+        },
+        yAxis: {
+            floor: -200,
+            tickInterval: 100,
+            startOnTick: true,
+            endOnTick: true,
+            title: {
+                text: 'Benefits Score'
+            },
+            labels: {
+                format: '{value}'
+            },
+            maxPadding: 0.2,
+        },
+        tooltip: {
+            useHTML: true,
+            headerFormat: '<table>',
+            pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+                '<tr><th>NPC</th><td>{point.x}</td></tr>' +
+                '<tr><th>Benefits Score</th><td>{point.y}</td></tr>' +
+                '<tr><th>Risk Score</th><td>{point.z}</td></tr>',
+            footerFormat: '</table>',
+            followPointer: true
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            data: [
+                {x: 18583, y: 3, z: 823, name: 'Stirling', country: 'Status Quo'},
+                {x: 21022, y: 822, z: 282, name: 'Stirling', country: 'Preferred Route'},
+                {x: 20322, y: 742, z: 387, name: 'Stirling', country: 'Ambitious'}
+            ],
+            marker: {
+                fillColor: {
+                    radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                    stops: [
+                        [0, 'rgba(255,255,255,0.5)'],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.5).get('rgba')]
+                    ]
+                }
+            }
+        },
+                {
+           data: [
+                {x: 13966, y: 0, z: 737, name: 'Falkirk', country: 'Status Quo'},
+                {x: 14601, y: 752, z: 438, name: 'Falkirk', country: 'Preferred Route'},
+                {x: 14334, y: 648, z: 505, name: 'Falkirk', country: 'Ambitious'}
+            ],
+            marker: {
+                fillColor: {
+                    radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                    stops: [
+                        [0, 'rgba(155,200,055,0.5)'],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.5).get('rgba')]
+                    ]
+                }
+            }
+        },{
+           data: [
+                {x: 17282, y: 0, z: 636, name: 'Alloa', country: 'Status Quo'},
+                {x: 15170, y: 821, z: 386, name: 'Alloa', country: 'Preferred Route'},
+                {x: 14557, y: 753, z: 385, name: 'Alloa', country: 'Ambitious'}
+            ],
+            marker: {
+                fillColor: {
+                    radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                    stops: [
+                        [0, 'rgba(055,100,255,0.5)'],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.5).get('rgba')]
+                    ]
+                }
+            }
+        }
+        ]
+    });
+});
+</script>
+<div id="container" style="width:80%; height:600px;"></div>
+{% endblock %}
